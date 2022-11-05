@@ -9,6 +9,11 @@ window.addEventListener("load", () => {
 
   pipe.classList.add("pipe-run");
 
+  mario.addEventListener("ontouchstart", () => {
+    mario.classList.add("jump");
+    setTimeout(() => mario.classList.remove("jump"), 500);
+  });
+
   document.addEventListener("keydown", (key) => {
     console.log(key);
 

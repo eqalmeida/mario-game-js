@@ -31,7 +31,10 @@ window.addEventListener("load", () => {
     if (pipe.classList.contains("pipe-run")) {
       pipe.classList.remove("pipe-run");
     }
-    pipe.classList.add("pipe-run");
+
+    pipe.classList.remove("pipe-run");
+    setTimeout(() => pipe.classList.add("pipe-run"), 500);
+
     mario.src = "./mario-gif.gif";
   });
 

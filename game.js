@@ -70,6 +70,8 @@ window.addEventListener("load", () => {
 
       if (marioBottom > pipe.offsetTop) {
         pipe.classList.remove("pipe-run");
+        pipe.style.right = "-80px";
+
         mario.src = "./game-over.png";
 
         if (numVidas > 0) {

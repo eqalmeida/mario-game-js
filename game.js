@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
   pontosSpan.innerText = pontos;
   resetBtn.style.display = "none";
 
-  jumpBtn.addEventListener("click", (evt) => {
+  jumpBtn.addEventListener("touchstart", (evt) => {
     mario.classList.add("jump");
     setTimeout(() => mario.classList.remove("jump"), 500);
   });

@@ -2,6 +2,10 @@ window.addEventListener("load", () => {
   const mario = document.querySelector(".mario");
   const pipe = document.querySelector(".pipe");
   const vidas = document.getElementById("vidas");
+  const pontosSpan = document.getElementById("pontos");
+  let pontos = 0;
+  let pulando = false;
+  let numVidas = 0;
 
   pipe.classList.add("pipe-run");
 
@@ -23,24 +27,40 @@ window.addEventListener("load", () => {
   const loop = () => {
     // console.log(pipe.offsetLeft, mario.offsetLeft, mario.offsetWidth);
     const marioBottom = mario.offsetTop + mario.offsetHeight;
-    if (
-      pipe.offsetLeft < mario.offsetLeft + 60 &&
-      pipe.offsetLeft + pipe.offsetWidth > mario.offsetLeft &&
-      marioBottom > pipe.offsetTop
-    ) {
-      pipe.classList.remove("pipe-run");
-      mario.src = "./game-over.png";
+    const pipeLeft = pipe.offsetLeft;
+    const pipeRight = pipeLeft + pipe.offsetWidth;
+    const marioLeft = mario.offsetLeft;
+    const marioRight = marioLeft + 60;
+    if (pipeLeft < marioRight && pipeRight > marioLeft) {
+      pulando = true;
 
-      setTimeout(() => {
-        pipe.classList.add("pipe-run");
-        mario.src = "./mario-gif.gif";
-      }, 2000);
+      if (marioBottom > pipe.offsetTop) {
+        pipe.classList.remove("pipe-run");
+        mario.src = "./game-over.png";
 
-      let numVidas = +vidas.innerText;
-      if (numVidas > 0) {
-        numVidas--;
-        vidas.innerText = numVidas;
+        numVidas = +vidas.innerText;
+        if (numVidas > 0) {
+          numVidas--;
+          vidas.innerText = numVidas;
+        }
+
+        if (numVidas > 0) {
+          setTimeout(() => {
+            pipe.classList.add("pipe-run");
+            mario.src = "./mario-gif.gif";
+          }, 2000);
+        }
+
+        pulando = false;
       }
+    } else {
+      if (pulando && pipeRight < marioLeft && numVidas > 0) {
+        pontos += 100;
+
+        pontosSpan.innerText = pontos;
+      }
+
+      pulando = false;
     }
   };
 

@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Tahoma";
 }
 
 .game-board {
@@ -19,7 +20,15 @@
   margin: 0 auto;
   background-color: #eee;
   border: solid 2px #999;
-  padding: 10px;
+  padding: 10px 0;
+}
+
+.statusbar span {
+  margin-left: 10px;
+}
+
+.vidas .pontos {
+  font-weight: bold;
 }
 
 .clouds1 {

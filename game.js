@@ -3,13 +3,33 @@ window.addEventListener("load", () => {
   const pipe = document.querySelector(".pipe");
   const vidas = document.getElementById("vidas");
   const pontosSpan = document.getElementById("pontos");
+  const resetBtn = document.getElementById("reset-btn");
   let pontos = 0;
   let pulando = false;
-  let numVidas = 0;
+  let numVidas = 10;
 
   pipe.classList.add("pipe-run");
+  vidas.innerText = numVidas;
+  pontosSpan.innerText = pontos;
+  resetBtn.style.display = "none";
 
-  mario.addEventListener("ontouchstart", () => {
+  resetBtn.addEventListener("click", (ev) => {
+    pontos = 0;
+    pulando = false;
+    numVidas = 10;
+    resetBtn.style.display = "none";
+
+    vidas.innerText = numVidas;
+    pontosSpan.innerText = pontos;
+
+    if (pipe.classList.contains("pipe-run")) {
+      pipe.classList.remove("pipe-run");
+    }
+    pipe.classList.add("pipe-run");
+    mario.src = "./mario-gif.gif";
+  });
+
+  mario.addEventListener("touchstart", (ev) => {
     mario.classList.add("jump");
     setTimeout(() => mario.classList.remove("jump"), 500);
   });
@@ -43,7 +63,6 @@ window.addEventListener("load", () => {
         pipe.classList.remove("pipe-run");
         mario.src = "./game-over.png";
 
-        numVidas = +vidas.innerText;
         if (numVidas > 0) {
           numVidas--;
           vidas.innerText = numVidas;
@@ -54,6 +73,8 @@ window.addEventListener("load", () => {
             pipe.classList.add("pipe-run");
             mario.src = "./mario-gif.gif";
           }, 2000);
+        } else {
+          resetBtn.style.display = "block";
         }
 
         pulando = false;

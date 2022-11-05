@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
   const mario = document.querySelector(".mario");
   const pipe = document.querySelector(".pipe");
+  const gameOver = document.querySelector(".game-over");
   const vidas = document.getElementById("vidas");
   const pontosSpan = document.getElementById("pontos");
   const resetBtn = document.getElementById("reset-btn");
@@ -13,6 +14,7 @@ window.addEventListener("load", () => {
   vidas.innerText = numVidas;
   pontosSpan.innerText = pontos;
   resetBtn.style.display = "none";
+  gameOver.style.display = "none";
 
   jumpBtn.addEventListener("touchstart", (evt) => {
     mario.classList.add("jump");
@@ -24,6 +26,7 @@ window.addEventListener("load", () => {
     pulando = false;
     numVidas = 10;
     resetBtn.style.display = "none";
+    gameOver.style.display = "none";
 
     vidas.innerText = numVidas;
     pontosSpan.innerText = pontos;
@@ -86,6 +89,7 @@ window.addEventListener("load", () => {
           }, 2000);
         } else {
           resetBtn.style.display = "block";
+          gameOver.style.display = "block";
         }
 
         pulando = false;

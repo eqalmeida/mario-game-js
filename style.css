@@ -52,6 +52,16 @@
   left: 100px;
 }
 
+.game-over {
+  position: absolute;
+  left: 30%;
+  top: 40%;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #810b0b;
+  display: none;
+}
+
 #jump-btn {
   margin: 20px auto;
   display: block;

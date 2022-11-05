@@ -52,6 +52,11 @@
   left: 100px;
 }
 
+#jump-btn {
+  margin: 10px auto;
+  display: block;
+}
+
 .jump {
   animation: mario-frames 0.5s;
 }

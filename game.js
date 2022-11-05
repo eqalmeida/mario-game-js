@@ -4,6 +4,7 @@ window.addEventListener("load", () => {
   const vidas = document.getElementById("vidas");
   const pontosSpan = document.getElementById("pontos");
   const resetBtn = document.getElementById("reset-btn");
+  const jumpBtn = document.getElementById("jump-btn");
   let pontos = 0;
   let pulando = false;
   let numVidas = 10;
@@ -12,6 +13,11 @@ window.addEventListener("load", () => {
   vidas.innerText = numVidas;
   pontosSpan.innerText = pontos;
   resetBtn.style.display = "none";
+
+  jumpBtn.addEventListener("click", (evt) => {
+    mario.classList.add("jump");
+    setTimeout(() => mario.classList.remove("jump"), 500);
+  });
 
   resetBtn.addEventListener("click", (ev) => {
     pontos = 0;
